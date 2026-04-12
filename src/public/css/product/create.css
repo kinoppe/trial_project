@@ -1,0 +1,94 @@
+.sell__content {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.sell__heading {
+    text-align: center;
+}
+
+.sell-form__group {
+    margin-bottom: 30px;
+}
+
+.sell-form__title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.sell-form__image-box {
+    height: 120px;
+    border: 1px dashed #bfbfbf;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sell-form__image-button {
+    padding: 5px 20px;
+    background: #fff;
+    color: #fe5757;
+    border: 2px solid #fe5757;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sell-form__section {
+    margin-top: 50px;
+}
+
+.sell-form__section-title {
+    color: #494949;
+    border-bottom: 1px solid #494949;
+}
+
+.sell-form__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 10px;
+}
+
+.sell-form__tag {
+    padding: 3px 17px;
+    background: #fff;
+    color: #fe5757;
+    border: 2px solid #fe5757;
+    border-radius: 15px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.sell-form__tag input {
+    display: none;
+}
+
+.sell-form__select,
+.sell-form__input,
+.sell-form__textarea {
+    width: 100%;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    border: 1px solid #494949;
+    border-radius: 3px;
+}
+
+.sell-form__textarea {
+    height: 130px;
+}
+
+.sell-form__submit {
+    margin: 50px 0;
+}
+
+.sell-form__submit-button {
+    width: 100%;
+    padding: 10px 0;
+    background: #fe5757;
+    color: #fff;
+    font-size: 18px;
+    border:none;
+    border-radius: 5px;
+    cursor: pointer;
+}

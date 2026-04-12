@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+}
+
+.header {
+    background: #000;
+}
+
+.header__inner {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1230px;
+    padding: 10px 0;
+    align-items: center;
+}
+
+.header__logo {
+    color: #fff;
+    font-size: 30px;
+}
+
+.header__search {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.search-form {
+    width: 100%;
+    max-width: 400px;
+}
+
+.search-form input {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 3px;
+    align-items: center;
+}
+
+.header__nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+
+.header__nav a {
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.login__link,
+.logout__link,
+.mypage__link {
+    color: #fff;
+}
+
+.sell__button {
+    color: #000;
+    background: #fff;
+    border-radius: 3px;
+    padding: 3px 20px;
+}
