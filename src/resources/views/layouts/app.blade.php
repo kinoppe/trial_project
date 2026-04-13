@@ -18,9 +18,18 @@
                 </form>
             </div>
             <nav class="header__nav">
-                @yield('nav')
-                <a class="mypage__link" href="">マイページ</a>
-                <a class="sell__button" href="">出品</a>
+                @auth
+                <form action="/logout" method="post">
+                    @csrf
+                    <button class="logout__link">ログアウト</button>
+                </form>
+                @endauth
+
+                @guest
+                <a class="login__link "href="/login">ログイン</a>
+                @endguest
+                <a class="mypage__link" href="/mypage">マイページ</a>
+                <a class="sell__button" href="/sell">出品</a>
             </nav>
         </div>
         

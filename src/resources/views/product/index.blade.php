@@ -8,10 +8,6 @@
 <link rel="stylesheet" href="{{asset('css/product/index.css')}}">
 @endsection
 
-@section('nav')
-<a class="login__link" href="/auth.login">ログイン</a>
-@endsection
-
 @section('content')
 <div class="product__content">
     <div class="tab-menu">

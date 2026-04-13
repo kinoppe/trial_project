@@ -41,6 +41,7 @@
     background: #fe5757;
     color: #fff;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .login__link {
@@ -51,4 +52,9 @@
 .login__link-submit {
     text-decoration: none;
     color: #0095ff;
+    cursor: pointer;
+}
+
+.form__error {
+    color: #ff0000;
 }

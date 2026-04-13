@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\MyPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,4 @@ use App\Http\Controllers\ProductController;
 Route::get('/', [ProductController::class,'index']);
 Route::get('/sell', [ProductController::class,'create']);
 // Route::post('/sell', [ProductController::class,'store']);
+Route::get('/mypage/profile', [MyPageController::class,'edit']);
