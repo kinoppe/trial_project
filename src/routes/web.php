@@ -21,4 +21,6 @@ use App\Http\Controllers\MyPageController;
 Route::get('/', [ProductController::class,'index']);
 Route::get('/sell', [ProductController::class,'create']);
 // Route::post('/sell', [ProductController::class,'store']);
+Route::get('/mypage', [MyPageController::class,'index']);
 Route::get('/mypage/profile', [MyPageController::class,'edit']);
+Route::post('/mypage/profile', [MyPageController::class,'update']);

@@ -31,7 +31,7 @@
             </div>
             <div class="profile-form-group__content">
                 <div class="profile-form__input--text">
-                    <input type="text" name="name" id="name" value="{{old('name')}}">
+                    <input type="text" name="name" id="name" value="{{old('name',$user->name)}}">
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="profile-form-group__content">
                 <div class="profile-form__input--text">
-                    <input type="text" name="postal_code" id="name" value="{{old('postal_code')}}">
+                    <input type="text" name="postal_code" id="name" value="{{old('postal_code',optional($profile)->postal_code)}}">
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="profile-form-group__content">
                 <div class="profile-form__input--text">
-                    <input type="text" name="address" id="address" value="{{old('address')}}">
+                    <input type="text" name="address" id="address" value="{{old('address',optional($profile)->address)}}">
                 </div>
             </div>
         </div>
@@ -64,7 +64,7 @@
             </div>
             <div class="profile-form-group__content">
                 <div class="profile-form__input--text">
-                    <input type="text" name="building" id="building" value="{{old('building')}}">
+                    <input type="text" name="building" id="building" value="{{old('building',optional($profile)->building)}}">
                 </div>
             </div>
         </div>
