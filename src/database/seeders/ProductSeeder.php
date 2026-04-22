@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class ProductSeeder extends Seeder
 {
@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('products')->insert([
+        $products =[
             [
                 'user_id' => 1,
                 'name' => '腕時計',
@@ -22,7 +22,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'Rolax',
                 'description' => 'スタイリッシュなデザインのメンズ腕時計',
                 'image' => 'products/Armani+Mens+Clock.jpg',
-                'condition' => '良好'
+                'condition' => '良好',
+                'categories' => [1,5],
             ],
             [
                 'user_id' => 1,
@@ -31,7 +32,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => '西芝',
                 'description' => '高速で信頼性の高いハードディスク',
                 'image' => 'products/HDD+Hard+Disk.jpg',
-                'condition' => '目立った傷や汚れなし'
+                'condition' => '目立った傷や汚れなし',
+                'categories' => [2],
             ],
             [
                 'user_id' => 1,
@@ -40,7 +42,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'null',
                 'description' => '新鮮な玉ねぎ3束セット',
                 'image' => 'products/iLoveIMG+d.jpg',
-                'condition' => 'やや傷や汚れあり'
+                'condition' => 'やや傷や汚れあり',
+                'categories' => [10],
             ],
             [
                 'user_id' => 1,
@@ -49,7 +52,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'null',
                 'description' => 'クラシックなデザインの革靴',
                 'image' => 'products/Leather+Shoes+Product+Photo.jpg',
-                'condition' => '状態が悪い'
+                'condition' => '状態が悪い',
+                'categories' => [1,5],
             ],
             [
                 'user_id' => 1,
@@ -58,7 +62,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'null',
                 'description' => '高性能なノートパソコン',
                 'image' => 'products/Living+Room+Laptop.jpg',
-                'condition' => '良好'
+                'condition' => '良好',
+                'categories' => [2],
             ],
             [
                 'user_id' => 1,
@@ -67,7 +72,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'なし',
                 'description' => '高音質のレコーディング用マイク',
                 'image' => 'products/Music+Mic+4632231.jpg',
-                'condition' => '目立った傷や汚れなし'
+                'condition' => '目立った傷や汚れなし',
+                'categories' => [2],
             ],
             [
                 'user_id' => 1,
@@ -76,7 +82,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'null',
                 'description' => 'おしゃれなショルダーバッグ',
                 'image' => 'products/Purse+fashion+pocket.jpg',
-                'condition' => 'やや傷や汚れあり'
+                'condition' => 'やや傷や汚れあり',
+                'categories' => [1,4],
             ],
             [
                 'user_id' => 1,
@@ -85,7 +92,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'なし',
                 'description' => '使いやすいタンブラー',
                 'image' => 'products/Tumbler+souvenir.jpg',
-                'condition' => '状態が悪い'
+                'condition' => '状態が悪い',
+                'categories' => [10],
             ],
             [
                 'user_id' => 1,
@@ -94,7 +102,8 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'Starbacks',
                 'description' => '手動のコーヒーミル',
                 'image' => 'products/Waitress+with+Coffee+Grinder.jpg',
-                'condition' => '良好'
+                'condition' => '良好',
+                'categories' => [3,10],
             ],
             [
                 'user_id' => 1,
@@ -103,8 +112,18 @@ class ProductSeeder extends Seeder
                 'brand_name' => 'null',
                 'description' => '便利なメイクアップセット',
                 'image' => 'products/外出メイクアップセット.jpg',
-                'condition' => '目立った傷や汚れなし'
+                'condition' => '目立った傷や汚れなし',
+                'categories' => [1,4,6],
             ],
-        ]);
+        ];
+
+        foreach ($products as $data) {
+            $categories = $data['categories'];
+            unset($data['categories']);
+
+            $product = Product::create($data);
+
+            $product->categories()->sync($categories);
+        }
     }
 }

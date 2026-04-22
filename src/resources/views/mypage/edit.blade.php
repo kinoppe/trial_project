@@ -17,7 +17,8 @@
         @csrf
         <div class="profile-form__image-area">
             <div class="profile-form__image">
-                <img id="preview" src="" alt="">
+                <img id="preview" src="{{ optional($profile)->profile_image 
+                ? asset('storage/' . $profile->profile_image) : asset('images/default-user.png') }}">
             </div>
             <div class="profile-form__image-button">
                 <label class="image-select" for="image">画像を選択する</label>
@@ -42,7 +43,7 @@
             </div>
             <div class="profile-form-group__content">
                 <div class="profile-form__input--text">
-                    <input type="text" name="postal_code" id="name" value="{{old('postal_code',optional($profile)->postal_code)}}">
+                    <input type="text" name="postal_code" id="postal_code" value="{{old('postal_code',optional($profile)->postal_code)}}">
                 </div>
             </div>
         </div>
@@ -72,5 +73,16 @@
         <div class="profile-form__button">
             <button class="profile-form__button-submit" type="submit">更新する</button>
         </div>
+    </form>
+    <script>
+    document.getElementById('image').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        const preview = document.getElementById('preview');
+
+        if (file) {
+            preview.src = URL.createObjectURL(file);
+        }
+    });
+    </script>
 </div>
 @endsection

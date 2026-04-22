@@ -15,11 +15,11 @@ class MyPageController extends Controller
         return view('mypage.index',compact('user','products'));
     }
 
-public function edit()
+    public function edit()
     {
         $user = Auth::user();
         $profile = $user->profile;
-    return view('mypage.edit',compact('user','profile'));
+        return view('mypage.edit',compact('user','profile'));
     }
 
     public function update(Request $request)
@@ -36,7 +36,7 @@ public function edit()
         ];
 
         if($request->hasFile('image')){
-            $profileData['image'] = $request->file('image')->store('profiles','public');
+            $profileData['profile_image'] = $request->file('image')->store('profiles','public');
         }
 
         $user->profile()->updateOrCreate(

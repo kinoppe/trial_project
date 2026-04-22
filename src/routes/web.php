@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +17,16 @@ use App\Http\Controllers\MyPageController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 Route::get('/', [ProductController::class,'index']);
+Route::get('/item/{item_id}', [ProductController::class,'show']);
 Route::get('/sell', [ProductController::class,'create']);
 // Route::post('/sell', [ProductController::class,'store']);
 Route::get('/mypage', [MyPageController::class,'index']);
 Route::get('/mypage/profile', [MyPageController::class,'edit']);
 Route::post('/mypage/profile', [MyPageController::class,'update']);
+Route::get('/purchase/{item_id}', [PurchaseController::class, 'create']);
+Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])
+    ->name('comment.store')
+    ->middleware('auth');
+

@@ -12,16 +12,16 @@
 <div class="product">
     <div class="tab-menu">
         <a class="tab-menu__item" href="">おすすめ</a>
-        <a class="tab-menu__item--my-list" href="">マイリスト</a>
+        <a class="tab-menu__item tab-menu__item--active" href="">マイリスト</a>
     </div>
     <div class="product__list">
         @foreach ($products as $product)
-        <div class="product-card">
-            <div class="product-card__image">
-                <img src="{{asset('storage/' . $product->image)}}" alt="">
+        <a class="product-card" href="{{url('/item/' . $product->id)}}">
+            <div class="product-card__image-box">
+                <img class="product-card__image" src="{{asset('storage/' . $product->image)}}" alt="">
             </div>
             <p class="product-card__name">{{$product->name}}</p>
-        </div>
+        </a>
         @endforeach
     </div>
 </div>
