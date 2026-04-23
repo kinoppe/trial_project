@@ -21,7 +21,13 @@ class ProductController extends Controller
     public function show($product_id)
     {
         $product = Product::with(['categories','comments.user','likes'])->findOrFail($product_id);
-        return view('product.show',compact('product'));
+
+        $isLiked = false;
+
+        if (auth()->check()) {
+            $isLiked = $product->likes->contains('user_id',auth()->id());
+        }
+        return view('product.show',compact('product','isLiked'));
     }
 
     public function create()

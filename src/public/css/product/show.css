@@ -56,8 +56,12 @@
 .product-detail__icon-button {
     background: transparent;
     border: none;
-    font-size: 40px;
     cursor: pointer;
+}
+
+.icon-button-liked {
+    width: 45px;
+    height: 40px;
 }
 
 .product-detail__purchase-button {

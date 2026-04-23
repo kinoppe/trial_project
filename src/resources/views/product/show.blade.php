@@ -22,9 +22,22 @@
         <div class="product-detail__actions">
             <div class="product-detail__icons">
                 <div class="product-detail__icon">
-                    <button class="product-detail__icon-button" type="button">
-                        <img src="{{asset('storage/icons/Vector.png')}}">
-                    </button>
+                    @if($isLiked)
+                        <form action="{{route('like.destroy',['item_id' => $product->id])}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="product-detail__icon-button" type="submit">
+                            <img class="icon-button-liked" src="{{asset('storage/icons/Vector1.png')}}">
+                            </button>
+                        </form>
+                    @else
+                        <form action="{{route('like.store',['item_id' => $product->id])}}" method="post">
+                            @csrf
+                            <button class="product-detail__icon-button" type="submit">
+                                <img src="{{asset('storage/icons/Vector.png')}}">
+                            </button>
+                        </form>
+                    @endif
                     <span class="product-detail__icons-count">{{$product->likes()->count()}}</span>
                 </div>
                 <div class="product-detail__icon">

@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,9 @@ Route::middleware('auth')->group(function () {
     ->name('purchase.create');
     Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])
     ->name('comment.store');
+    Route::post('/item/{item_id}/like', [LikeController::class, 'store'])
+    ->name('like.store');
+    Route::delete('/item/{item_id}/like', [LikeController::class, 'destroy'])
+    ->name('like.destroy');
 });
 
