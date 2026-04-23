@@ -5,18 +5,20 @@
 @endsection
 
 @section('css')
-<link rel="stylesheet" href="{{asset('css/mypage/edit.css')}}">
+<link rel="stylesheet" href="{{asset('css/mypage/index.css')}}">
 @endsection
 
 @section('content')
 <div class="mypage">
     <div class="mypage-profile">
-        <div class="profile-image">
-            @if($user->profile && $user->profile->image)
-            <img src="{{asset('storage/' . $user->profile->image)}}">
-            @endif
+        <div class="mypage-profile-user">
+            <div class="profile-image">
+                @if($user->profile && $user->profile->profile_image)
+                <img src="{{asset('storage/' . $user->profile->profile_image)}}">
+                @endif
+            </div>
+            <h1 class="profile-name">{{$user->name}}</h1>
         </div>
-        <h1 class="profile-name">{{$user->name}}</h1>
         <a class="profile-edit" href="/mypage/profile">プロフィールを編集</a>
     </div>
 

@@ -50,7 +50,8 @@
     gap: 12px 10px;
 }
 
-.sell-form__tag {
+.sell-form__tag span {
+    display: inline-block;
     padding: 3px 17px;
     background: #fff;
     color: #fe5757;
@@ -62,6 +63,11 @@
 
 .sell-form__tag input {
     display: none;
+}
+
+.sell-form__tag input:checked + span {
+    background: #fe5757;
+    color: #fff;
 }
 
 .sell-form__select,

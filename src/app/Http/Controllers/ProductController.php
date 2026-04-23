@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Like;
 use App\Models\Comment;
 use App\Http\Requests\ExhibitionRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -31,6 +32,21 @@ class ProductController extends Controller
 
     public function store(ExhibitionRequest $request)
     {
+        $data = $request->only([
+            'name',
+            'brand_name',
+            'description',
+            'condition',
+            'price'
+        ]);
+
+        $data['user_id'] = Auth::id();
+
+        $data['image'] = $request->file('image')->store('products','public');
+
+        $product = Product::create($data);
+
+        $product->categories()->sync($request->categories);
         return redirect('/');
     }
 }

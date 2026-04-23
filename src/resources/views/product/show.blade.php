@@ -22,16 +22,20 @@
         <div class="product-detail__actions">
             <div class="product-detail__icons">
                 <div class="product-detail__icon">
-                    <button class="product-detail__icon-button" type="button">🤍</button>
+                    <button class="product-detail__icon-button" type="button">
+                        <img src="{{asset('storage/icons/Vector.png')}}">
+                    </button>
                     <span class="product-detail__icons-count">{{$product->likes()->count()}}</span>
                 </div>
                 <div class="product-detail__icon">
-                    <button class="product-detail__icon-button" type="button">💬</button>
+                    <button class="product-detail__icon-button" type="button">
+                        <img src="{{asset('storage/icons/ふきだしのアイコン.png')}}">
+                    </button>
                     <span class="product-detail__icons-count">{{$product->comments()->count()}}</span>
                 </div>
             </div>
 
-            <a class="product-detail__purchase-button" href="">購入手続きへ</a>
+            <a class="product-detail__purchase-button" href="{{ route('purchase.create', ['item_id' => $product->id]) }}">購入手続きへ</a>
         </div>
 
         <div class="product-detail__group">

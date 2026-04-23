@@ -27,6 +27,7 @@
 .product-card {
     width: 280px;
     margin-bottom: 60px;
+    text-decoration: none;
 
 }
 
@@ -44,4 +45,5 @@
 .product-card__name {
     font-size: 20px;
     margin: 0;
+    color: #000;
 }

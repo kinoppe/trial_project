@@ -1,0 +1,41 @@
+.mypage {
+    max-width: 1230px;
+    margin: 60px auto;
+}
+
+.mypage-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 80px;
+}
+
+.mypage-profile-user {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    overflow: hidden;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-edit {
+    padding: 5px 20px;
+    color: #fe5757;
+    border: 2px solid #fe5757;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+}

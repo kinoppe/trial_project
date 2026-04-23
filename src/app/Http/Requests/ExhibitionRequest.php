@@ -30,7 +30,7 @@ class ExhibitionRequest extends FormRequest
             'categories' => ['required','array'],
             'categories.*' => ['exists:categories,id'],
             'condition' => ['required'],
-            'price' => ['required','numeric','min:0'],
+            'price' => ['required','integer','min:0'],
         ];
     }
 
@@ -45,7 +45,7 @@ class ExhibitionRequest extends FormRequest
             'categories.required' => '商品のカテゴリーを選択してください',
             'condition.required' => '商品の状態を選択してください',
             'price.required' => '商品価格を入力してください',
-            'price.numeric' => '商品価格は数値で入力してください',
+            'price.integer' => '商品価格は数値で入力してください',
             'price.min' => '商品価格は0円以上で入力してください',
         ];
     }

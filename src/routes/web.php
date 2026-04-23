@@ -20,13 +20,15 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [ProductController::class,'index']);
 Route::get('/item/{item_id}', [ProductController::class,'show']);
-Route::get('/sell', [ProductController::class,'create']);
-// Route::post('/sell', [ProductController::class,'store']);
-Route::get('/mypage', [MyPageController::class,'index']);
-Route::get('/mypage/profile', [MyPageController::class,'edit']);
-Route::post('/mypage/profile', [MyPageController::class,'update']);
-Route::get('/purchase/{item_id}', [PurchaseController::class, 'create']);
-Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])
-    ->name('comment.store')
-    ->middleware('auth');
+Route::middleware('auth')->group(function () {
+    Route::get('/sell', [ProductController::class,'create']);
+    Route::post('/sell', [ProductController::class,'store']);
+    Route::get('/mypage', [MyPageController::class,'index']);
+    Route::get('/mypage/profile', [MyPageController::class,'edit']);
+    Route::post('/mypage/profile', [MyPageController::class,'update']);
+    Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])
+    ->name('purchase.create');
+    Route::post('/item/{item_id}/comment', [CommentController::class, 'store'])
+    ->name('comment.store');
+});
 
