@@ -12,9 +12,26 @@ use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
+        $tab = $request->query('tab');
+
+        if ($tab === 'mylist') {
+            if (!auth()->check()) {
+                $products = collect();
+            } else {
+                $products = Product::whereHas('likes',function ($query) {
+                    $query->where('user_id',auth()->id());
+                })
+                ->with('purchase')
+                ->get();
+            }
+        } else {
+            $products = Product::where('user_id','!=',auth()->id())
+                ->with('purchase')
+                ->get();
+        }
+
         return view('product.index',compact('products'));
     }
 

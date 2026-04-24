@@ -98,3 +98,7 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+.form__error {
+    color: red;
+}

@@ -1,13 +1,8 @@
-.mypage {
-    max-width: 1230px;
-    margin: 60px auto;
-}
-
 .mypage-profile {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin-bottom: 80px;
+    margin: 50px auto;
 }
 
 .mypage-profile-user {
@@ -38,4 +33,53 @@
     cursor: pointer;
     text-decoration: none;
     font-weight: bold;
+}
+
+.mypage-tabs {
+    display: flex;
+    padding-left: 100px;
+    border-bottom: 1px solid #000;
+    gap: 70px;
+}
+
+.mypage-tab {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 700;
+    color: #494949;
+}
+
+.mypage-tab--active {
+    color: red;
+}
+
+.product__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 50px 40px;
+}
+
+.product-card {
+    width: 280px;
+    margin-bottom: 60px;
+    text-decoration: none;
+
+}
+
+.product-card__image-box {
+    width: 280px;
+    height: 280px;
+}
+
+.product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-card__name {
+    font-size: 20px;
+    margin: 0;
+    color: #000;
 }

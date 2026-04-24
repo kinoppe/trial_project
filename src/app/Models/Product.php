@@ -37,4 +37,9 @@ class Product extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function purchase()
+    {
+        return $this->hasOne(Purchase::class);
+    }
 }

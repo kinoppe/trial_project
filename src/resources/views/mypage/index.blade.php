@@ -23,23 +23,23 @@
     </div>
 
     <div class="mypage-tabs">
-        <a class="mypage-tab {{request('page') !== 'buy' ? 'active' : ''}}"
+        <a class="mypage-tab {{request('page') !== 'buy' ? 'mypage-tab--active' : ''}}"
         href="/mypage?page=sell">出品した商品</a>
 
-        <a class="mypage-tab {{request('page') === 'buy' ? 'active' : ''}}"
+        <a class="mypage-tab {{request('page') === 'buy' ? 'mypage-tab--active' : ''}}"
         href="/mypage?page=buy">購入した商品</a>
     </div>
 
     <div class="mypage__content">
-        <div class="product-list">
-            @foreach ($products as $product)
-            <div class="product-card">
-                <div class="product-image">
-                    <img src="{{asset('storage/' . $product->image)}}">
-                </div>
-                <p class="product-name">{{$product->name}}</p>
+        <div class="product__list">
+        @foreach ($products as $product)
+        <a class="product-card" href="{{url('/item/' . $product->id)}}">
+            <div class="product-card__image-box">
+                <img class="product-card__image" src="{{asset('storage/' . $product->image)}}" alt="">
             </div>
-            @endforeach
+            <p class="product-card__name">{{$product->name}}</p>
+        </a>
+        @endforeach
         </div>
     </div>
 </div>

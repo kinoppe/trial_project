@@ -22,6 +22,7 @@ use App\Http\Controllers\LikeController;
 Route::get('/', [ProductController::class,'index']);
 Route::get('/item/{item_id}', [ProductController::class,'show']);
 Route::middleware('auth')->group(function () {
+    Route::get('/?tab=mylist', [ProductController::class,'index']);
     Route::get('/sell', [ProductController::class,'create']);
     Route::post('/sell', [ProductController::class,'store']);
     Route::get('/mypage', [MyPageController::class,'index']);
