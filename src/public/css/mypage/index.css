@@ -7,7 +7,7 @@
 
 .mypage-profile-user {
     display: flex;
-    gap: 50px;
+    gap: 80px;
     align-items: center;
 }
 
@@ -25,13 +25,18 @@
     object-fit: cover;
 }
 
+.profile-name {
+    font-size: 40px;
+}
+
 .profile-edit {
-    padding: 5px 20px;
+    padding: 5px 30px;
     color: #fe5757;
     border: 2px solid #fe5757;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
+    font-size: 24px;
     font-weight: bold;
 }
 

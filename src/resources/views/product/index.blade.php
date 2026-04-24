@@ -11,8 +11,8 @@
 @section('content')
 <div class="product">
     <div class="tab-menu">
-        <a class="tab-menu__item {{request('tab') !== 'mylist' ? 'tab-menu__item--active' : ''}}" href="/">おすすめ</a>
-        <a class="tab-menu__item {{request('tab') === 'mylist' ? 'tab-menu__item--active' : ''}}" href="/?tab=mylist">マイリスト</a>
+        <a class="tab-menu__item {{request('tab') !== 'mylist' ? 'tab-menu__item--active' : ''}}" href="/?keyword={{request('keyword')}}">おすすめ</a>
+        <a class="tab-menu__item {{request('tab') === 'mylist' ? 'tab-menu__item--active' : ''}}" href="/?tab=mylist&keyword={{request('keyword')}}">マイリスト</a>
     </div>
     <div class="product__list">
         @foreach ($products as $product)

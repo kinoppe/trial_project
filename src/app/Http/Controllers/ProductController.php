@@ -15,6 +15,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $tab = $request->query('tab');
+        $keyword = $request->query('keyword');
 
         if ($tab === 'mylist') {
             if (!auth()->check()) {
@@ -23,11 +24,20 @@ class ProductController extends Controller
                 $products = Product::whereHas('likes',function ($query) {
                     $query->where('user_id',auth()->id());
                 })
+                ->when($keyword, function ($query, $keyword) {
+                    $query->where('name', 'like', '%' . $keyword . '%');
+                })
                 ->with('purchase')
                 ->get();
             }
         } else {
-            $products = Product::where('user_id','!=',auth()->id())
+            $products = Product::query()
+                ->when(auth()->check(),function ($query) {
+                    $query->where('user_id','!=',auth()->id());
+                })
+                ->when($keyword,function ($query,$keyword) {
+                    $query->where('name','like','%' . $keyword . '%');
+                })
                 ->with('purchase')
                 ->get();
         }

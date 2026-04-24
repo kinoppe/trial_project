@@ -15,8 +15,11 @@
                 <img src="{{ asset('storage/icons/CoachTech_White 1 (1).png') }}">
             </a>
             <div class="header__search">
-                <form class="search-form" action="/products/search" method="get">
-                    <input class="search-form__input" type="text" name="keyword" placeholder="なにをお探しですか？">
+                <form class="search-form" action="/" method="get">
+                    @if(request('tab')==='mylist')
+                    <input type="hidden" name="tab" value="mylist">
+                    @endif
+                    <input class="search-form__input" type="text" name="keyword" placeholder="なにをお探しですか？" value="{{request('keyword')}}">
                 </form>
             </div>
             <nav class="header__nav">
@@ -28,7 +31,7 @@
                 @endauth
 
                 @guest
-                <a class="login__link "href="/login">ログイン</a>
+                <a class="login__link" href="/login">ログイン</a>
                 @endguest
                 <a class="mypage__link" href="/mypage">マイページ</a>
                 <a class="sell__button" href="/sell">出品</a>
