@@ -8,10 +8,6 @@
 <link rel="stylesheet" href="{{asset('css/product/create.css')}}">
 @endsection
 
-@section('nav')
-<a class="logout__link" href="/auth.logout">ログアウト</a>
-@endsection
-
 @section('content')
 <div class="sell__content">
     <div class="sell__heading">
