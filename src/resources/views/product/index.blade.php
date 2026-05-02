@@ -16,19 +16,16 @@
     </div>
     <div class="product__list">
         @foreach ($products as $product)
-        @if ($product->purchase)
-            <span class="sold-label">Sold</span>
-        @endif
         <a class="product-card" href="{{url('/item/' . $product->id)}}">
             <div class="product-card__image-box">
                 <img class="product-card__image" src="{{asset('storage/' . $product->image)}}" alt="">
-                
+                @if ($product->purchase)
+                    <span class="sold-label">Sold</span>
+                @endif
             </div>
             <p class="product-card__name">{{$product->name}}</p>
         </a>
-        
         @endforeach
-        
     </div>
 </div>
 @endsection
