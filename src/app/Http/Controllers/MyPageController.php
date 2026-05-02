@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,7 +12,13 @@ class MyPageController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        $products = $user->products;
+        $page = $request->query('page');
+        if ($page === 'buy') {
+            $products = $user->purchases()->with('product')->get()->pluck('product');
+        } else {
+            $products = $user->products;
+        }
+        
         return view('mypage.index',compact('user','products'));
     }
 
@@ -22,7 +29,7 @@ class MyPageController extends Controller
         return view('mypage.edit',compact('user','profile'));
     }
 
-    public function update(Request $request)
+    public function update(ProfileRequest $request)
     {
         $user = Auth::user();
         $user->update([

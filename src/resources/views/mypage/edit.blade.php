@@ -24,6 +24,11 @@
                 <label class="image-select" for="image">画像を選択する</label>
                 <input type="file" name="image" id="image" hidden>
             </div>
+            <div class="form__error">
+                @error('profile_image')
+                {{$message}}
+                @enderror
+            </div>
         </div>
 
         <div class="profile-form__group">
@@ -35,6 +40,11 @@
                     <input type="text" name="name" id="name" value="{{old('name',$user->name)}}">
                 </div>
             </div>
+            <div class="form__error">
+                @error('name')
+                {{$message}}
+                @enderror
+            </div>
         </div>
 
         <div class="profile-form__group">
@@ -45,6 +55,11 @@
                 <div class="profile-form__input--text">
                     <input type="text" name="postal_code" id="postal_code" value="{{old('postal_code',optional($profile)->postal_code)}}">
                 </div>
+            </div>
+            <div class="form__error">
+                @error('postal_code')
+                {{$message}}
+                @enderror
             </div>
         </div>
 

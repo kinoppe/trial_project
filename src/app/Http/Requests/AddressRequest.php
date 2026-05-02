@@ -24,7 +24,7 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'postal_code' => ['required','string','size:8'],
+            'postal_code' => ['required','string','size:8','regex:/^[0-9]{3}-[0-9]{4}$/'],
             'address' => ['required','string'],
             'building' => ['nullable','string']
         ];
@@ -35,6 +35,7 @@ class AddressRequest extends FormRequest
         return [
             'postal_code.required' => '郵便番号を入力してください',
             'postal_code.size' => '郵便番号はハイフンありの8文字で入力してください',
+            'postal_code.regex' => '郵便番号は123-4567の形式で入力してください',
             'address.required' => '住所を入力してください'
         ];
     }

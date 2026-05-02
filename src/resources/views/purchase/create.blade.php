@@ -22,6 +22,11 @@
         </div>
         <form class="purchase-form" action="/purchase/{{$product->id}}" method="post" id="purchase-form">
             @csrf
+
+            <input type="hidden" name="postal_code" value="{{ $address['postal_code'] ?? '' }}">
+            <input type="hidden" name="address" value="{{ $address['address'] ?? '' }}">
+            <input type="hidden" name="building" value="{{ $address['building'] ?? '' }}">
+
             <div class="purchase-group">
                 <p class="purchase-group__title">支払い方法</p>
                 <select class="purchase-form__select" name="payment_method" id="payment-method">
@@ -29,8 +34,13 @@
                     <option value="1">コンビニ払い</option>
                     <option value="2">カード支払い</option>
                 </select>
+                <div class="form__error">
+                    @error('payment_method')
+                    {{$message}}
+                    @enderror
+                </div>
             </div>
-        </form>
+
             <div class="purchase-group">
                 <div class="purchase-delivery">
                     <p class="purchase-group__title">配送先</p>
@@ -40,17 +50,26 @@
                     <p>〒 {{$address['postal_code']}}</p>
                     <p>{{$address['address']}} {{$address['building']}}</p>
                 </div>
+                <div class="form__error">
+                    @error('postal_code')
+                    {{$message}}
+                    @enderror
+                    @error('address')
+                    {{$message}}
+                    @enderror
+                </div>
             </div>
+        </form>
     </div>
 
     <div class="purchase-right">
         <div class="purchase-confirm">
             <div class="purchase-confirm__row">
-                <span>商品代金</span>
+                <span class="purchase-confirm__title">商品代金</span>
                 <span>¥ {{number_format($product->price)}}</span>
             </div>
             <div class="purchase-confirm__row">
-                <span>支払い方法</span>
+                <span class="purchase-confirm__title">支払い方法</span>
                 <span id="selected-payment">選択してください</span>
             </div>
         </div>
