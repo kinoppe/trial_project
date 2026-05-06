@@ -3,15 +3,14 @@
 namespace App\Providers;
 
 use App\Actions\Fortify\CreateNewUser;
-use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use App\Http\Responses\RegisterResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+use App\Http\Requests\LoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -38,7 +37,10 @@ class FortifyServiceProvider extends ServiceProvider
             return view('auth.login');
         });
 
-        Fortify::authenticateUsing(function (Request $request) {
+        Fortify::authenticateUsing(function ($request) {
+            $loginRequest = app(LoginRequest::class);
+            $loginRequest->merge($request->all());
+            $loginRequest->validateResolved();
             $user = User::where('email', $request->email)->first();
 
             if (! $user || ! Hash::check($request->password, $user->password)) {
