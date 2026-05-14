@@ -87,7 +87,7 @@ class PurchaseController extends Controller
         session()->forget('purchase_data.' . $item_id);
         session()->forget('purchase_address.' . $item_id);
 
-        return redirect('/')->with('success', '購入が完了しました。');
+        return redirect('/');
     }
 
     public function edit($item_id)
