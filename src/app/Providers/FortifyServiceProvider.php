@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Http\Responses\RegisterResponse;
 use Laravel\Fortify\Contracts\RegisterResponse as RegisterResponseContract;
+use App\Http\Requests\RegisterRequest;
+use Laravel\Fortify\Http\Requests\RegisterRequest as FortifyRegisterRequest;
 use App\Http\Requests\LoginRequest;
 use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 
@@ -28,10 +30,15 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        // $this->app->bind(
-        //     \Laravel\Fortify\Http\Requests\LoginRequest::class,
-        //     \App\Http\Requests\LoginRequest::class
-        // );
+        $this->app->bind(
+            FortifyLoginRequest::class,
+            LoginRequest::class
+        );
+
+        $this->app->bind(
+            FortifyRegisterRequest::class,
+            RegisterRequest::class
+        );
 
         Fortify::createUsersUsing(CreateNewUser::class);
 

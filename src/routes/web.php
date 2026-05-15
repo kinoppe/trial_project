@@ -43,9 +43,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/sell', [ProductController::class,'create']);
     Route::post('/sell', [ProductController::class,'store']);
 
-    Route::get('/mypage', [MyPageController::class,'index']);
+    Route::get('/mypage', [MyPageController::class,'sell']);
     Route::get('/mypage/profile', [MyPageController::class,'edit']);
     Route::post('/mypage/profile', [MyPageController::class,'update']);
+    Route::get('/mypage/sell', [MyPageController::class, 'sell'])
+    ->name('mypage.sell');
+    Route::get('/mypage/buy', [MyPageController::class, 'buy'])
+    ->name('mypage.buy');
 
     Route::get('/purchase/success/{item_id}', [PurchaseController::class, 'success']);
     Route::get('/purchase/{item_id}', [PurchaseController::class, 'create'])

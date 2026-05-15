@@ -24,10 +24,10 @@
 
     <div class="mypage-tabs">
         <a class="mypage-tab {{request('page') !== 'buy' ? 'mypage-tab--active' : ''}}"
-        href="/mypage?page=sell">出品した商品</a>
+        href="{{ route('mypage.sell') }}">出品した商品</a>
 
         <a class="mypage-tab {{request('page') === 'buy' ? 'mypage-tab--active' : ''}}"
-        href="/mypage?page=buy">購入した商品</a>
+        href="{{ route('mypage.buy') }}">購入した商品</a>
     </div>
 
     <div class="mypage__content">

@@ -8,17 +8,24 @@ use Illuminate\Support\Facades\Auth;
 
 class MyPageController extends Controller
 {
-    public function index(Request $request)
+    public function sell()
     {
         $user = Auth::user();
-        $page = $request->query('page');
-        if ($page === 'buy') {
-            $products = $user->purchases()->with('product')->get()->pluck('product');
-        } else {
-            $products = $user->products;
-        }
-        
-        return view('mypage.index',compact('user','products'));
+        $products = $user->products;
+
+        return view('mypage.index', compact('user', 'products'));
+    }
+
+    public function buy()
+    {
+        $user = Auth::user();
+
+        $products = $user->purchases()
+            ->with('product')
+            ->get()
+            ->pluck('product');
+
+        return view('mypage.index', compact('user', 'products'));
     }
 
     public function edit()
