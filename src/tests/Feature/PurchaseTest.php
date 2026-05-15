@@ -111,7 +111,7 @@ class PurchaseTest extends TestCase
 
         $this->actingAs($user)->get('/purchase/success/' . $product->id);
 
-        $response = $this->actingAs($user)->get('/mypage?page=buy');
+        $response = $this->actingAs($user)->get('/mypage/buy');
 
         $response->assertSee('購入テスト商品');
     }
